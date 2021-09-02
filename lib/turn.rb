@@ -7,6 +7,12 @@ class Turn
     colors_correct = 0
     colors_in_correct_positions = 0
 
+    guess = 'rrgb'
+    array = guess.split ''
+    p array
+
+
+
     #guess argument is equal to 'rrgb'
     #which means the 'b' and the second 'r' in guess are in
     #the correct positions relative to hidden_code below
@@ -34,3 +40,5 @@ class Turn
 
 
 end
+turn = Turn.new
+turn.compare('rrgb')
