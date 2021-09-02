@@ -2,11 +2,11 @@
 
 puts "Welcome to MASTERMIND!\n\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?\n>"
 response = gets.chomp.downcase
-# responses = ["p", "play", "i", "instructions", "q", "quit"] -- leave for refactoring
-# until responses.include?(response)
-until response == "p" || response == "play" ||
-      response == "i" || response == "instructions" ||
-      response == "q" || response == "quit"
+responses = ["p", "play", "i", "instructions", "q", "quit"]# -- leave for refactoring
+until responses.include?(response)
+# until response == "p" || response == "play" ||
+#       response == "i" || response == "instructions" ||
+#       response == "q" || response == "quit"
 
 if response == "p" || response == "play"
   # game flow
