@@ -2,7 +2,7 @@ class CodeGenerator
   attr_reader :hidden_code
 
   def initialize
-    @hidden_code = []
+    @hidden_code = hidden_code
   end
 
   def all_possible_codes
@@ -11,6 +11,6 @@ class CodeGenerator
   end
 
   def hidden_code
-  @hidden_code = all_possible_codes.sample
+    all_possible_codes.sample
   end
 end
