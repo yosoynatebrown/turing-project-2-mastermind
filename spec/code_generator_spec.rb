@@ -8,12 +8,18 @@ describe CodeGenerator do
      code_generator = CodeGenerator.new
 
 
-    expect(code_generator).to be_a(CodeGenerator)
+    expect(code_generator).to be_an_instance_of(CodeGenerator)
    end
 
    it '#all_possible_codes' do
      code_generator = CodeGenerator.new
 
-    expect(code_generator.hidden_code).to be_an(Array)
+    expect(code_generator.all_possible_codes).to be_an(Array)
+   end
+
+   it 'can create a sample hidden code'do
+     code_generator = CodeGenerator.new
+
+     expect(code_generator.hidden_code).to be_an(Array)
    end
 end
