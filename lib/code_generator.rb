@@ -5,12 +5,12 @@ class CodeGenerator
     @hidden_code = []
   end
 
-def all_possible_codes
+  def all_possible_codes
   colors = ['r', 'g', 'b', 'y']
   colors.repeated_permutation(4).to_a
-end
+  end
 
-def hidden_code
+  def hidden_code
   @hidden_code = all_possible_codes.sample
-end
+  end
 end
