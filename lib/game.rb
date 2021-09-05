@@ -23,7 +23,9 @@ class Game
 
     total_time = end_time - start_time
 
-    time_string = Time.at(total_time).strftime("%M minutes, %S seconds") #add hours if time
+    time_string = Time.at(total_time).strftime("%M minutes, %S seconds")
+    #this takes the first 0 off of 00 in minutes:
+    time_string[0] = ""
 
     if @player1.won == true
       puts "Congratulations! You guessed the sequence '#{hidden_code.join.to_s.upcase}' in #{player1.number_of_guesses} guesses over #{time_string}.
@@ -37,7 +39,7 @@ class Game
         game_flow
       elsif replay_response == 'q' || replay_response == 'quit'
       else
-        puts "You entered an invalid response. I'm done here."
+        puts "You entered an invalid response. You lost your chance to play again. Be better."
       end
   end
   end
