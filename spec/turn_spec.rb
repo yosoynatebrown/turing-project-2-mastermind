@@ -2,19 +2,22 @@ require 'turn'
 require 'rspec'
 
 describe Turn do
+  before(:each) do
+    turn = Turn.new
+  end
   describe "#initialize" do
     it 'exists' do
-      turn = Turn.new
     expect(turn).to be_a(Turn)
     end
   end
+  describe "#retrieve_guess" do
+    turn.retrieve_guess
+
+  end
   describe "#compare" do
     it 'compares guess string to hidden code and returns num correct and num in correct place' do
-      turn = Turn.new
 
     expect(turn.compare).to eq([3, 2])
-    # expect(turn.compare('grrb')).to eq([3, 4])
-    # expect(turn.compare('brgy')).to eq([3, 1])
     end
   end
 end

@@ -1,7 +1,7 @@
 class Player
-  attr_reader :number_of_guesses
   attr_accessor :quit,
-                :won
+                :won,
+                :number_of_guesses
   def initialize
     @number_of_guesses = 0
     @won = false
