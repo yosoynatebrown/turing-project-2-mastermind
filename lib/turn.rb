@@ -7,6 +7,8 @@ class Turn
     @guess = []
     @hidden_code = hidden_code
     @player1 = player1
+    @colors_correct = 0
+    @colors_in_correct_positions = 0
     turn_flow
   end
 
@@ -18,16 +20,15 @@ class Turn
     if @guess == 'q' || @guess == 'quit'
       @player1.quit = true
     elsif @guess == 'c' || @guess == 'cheat'
-      puts "Kinda lame to cheat like that but here's your hidden code: #{@hidden_code.join("").upcase}"
-    end
-    if @guess.length < 4
-      puts "Your guess is too short. Try again."
+      puts "\nKinda lame to cheat like that but here's your hidden code: #{@hidden_code.join("").upcase}\n\n"
+    elsif @guess.length < 4
+      puts "\nYour guess is too short. Try again.\n\n"
+      retrieve_guess
     elsif @guess.length > 4
-      puts "Your guess is too long. Try again."
+      puts "\nYour guess is too long. Try again.\n\n"
+      retrieve_guess
     end
   end
-
-
 
   def win_checker
     if @guess.split('') == @hidden_code
@@ -36,20 +37,21 @@ class Turn
   end
 
   def compare
-    individual_guesses = @guess.split('')
-    individual_guesses.map.with_index {|color, i| color == @hidden_code[i]}
-    colors_correct = (individual_guesses & @hidden_code).count
-    colors_in_correct_positions = individual_guesses.map.with_index {|color, i|
-       color == @hidden_code[i]}.count(true)
-    return [colors_correct, colors_in_correct_positions]
+      individual_guesses = @guess.split('')
+      individual_guesses.map.with_index {|color, i| color == @hidden_code[i]}
+      @colors_correct = (individual_guesses & @hidden_code).count
+      @colors_in_correct_positions = individual_guesses.map.with_index {|color, i|
+         color == @hidden_code[i]}.count(true)
   end
 
   def turn_flow
     retrieve_guess
     win_checker
-    feedback = compare
+    compare
     @player1.increment_number_of_guesses
-    puts "'#{@guess.upcase}' has #{feedback[0]} of the correct elements with #{feedback[1]} in the correct positions
-    You've taken #{@player1.number_of_guesses} guess(es)"
+    unless @guess == 'c' || @guess == 'cheat'
+      puts "'#{@guess.upcase}' has #{@colors_correct} of the correct elements with #{@colors_in_correct_positions} in the correct positions
+      You've taken #{@player1.number_of_guesses} guess(es)"
+    end
   end
 end

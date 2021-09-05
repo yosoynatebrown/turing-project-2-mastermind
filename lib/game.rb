@@ -31,7 +31,10 @@ class Game
       Do you want to (p)lay again or (q)uit?"
       replay_response = gets.chomp.downcase
       if replay_response == 'p' || replay_response == 'play'
-
+        @player1.won = false
+        @player1.number_of_guesses = 0
+        @hidden_code = CodeGenerator.new.hidden_code
+        game_flow
       elsif replay_response == 'q' || replay_response == 'quit'
       else
         puts "You entered an invalid response. I'm done here."
