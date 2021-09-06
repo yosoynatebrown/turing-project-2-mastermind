@@ -14,4 +14,8 @@ describe Player do
     @player1.increment_number_of_guesses
     expect(@player1.number_of_guesses).to eq(1)
   end
+  it '#win' do
+    @player1.win
+    expect(@player1.won).to eq(true)
+  end
 end
