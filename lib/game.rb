@@ -8,7 +8,8 @@ class Game
 
   def initialize
     @hidden_code = CodeGenerator.new.hidden_code
-    @player1 = Player.new
+    @player1     = Player.new
+    @time_string = ""
   end
 
 
@@ -23,14 +24,20 @@ class Game
 
     total_time = end_time - start_time
 
-    time_string = Time.at(total_time).strftime("%M minutes, %S seconds")
+    @time_string = Time.at(total_time).strftime("%M minutes, %S seconds")
     #this takes the first 0 off of 00 in minutes:
-    time_string[0] = ""
-
+    @time_string[0] = ""
     if @player1.won == true
-      puts "Congratulations! You guessed the sequence '#{hidden_code.join.to_s.upcase}' in #{player1.number_of_guesses} guesses over #{time_string}.
+      puts "Congratulations! You guessed the sequence '#{hidden_code.join.to_s.upcase}' in #{player1.number_of_guesses} guesses over #{@time_string}."
+    end
+    replay
+  end
+end
 
-      Do you want to (p)lay again or (q)uit?"
+
+def replay
+    if @player1.won == true
+      puts "Do you want to (p)lay again or (q)uit?"
       replay_response = gets.chomp.downcase
       if replay_response == 'p' || replay_response == 'play'
         @player1.won = false
@@ -39,8 +46,8 @@ class Game
         game_flow
       elsif replay_response == 'q' || replay_response == 'quit'
       else
-        puts "You entered an invalid response. You lost your chance to play again. Be better."
+        puts "You entered an invalid response. Let's try this again."
+        replay
       end
+    end
   end
-  end
-end
