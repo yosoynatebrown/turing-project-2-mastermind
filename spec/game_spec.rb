@@ -8,8 +8,13 @@ describe Game do
   it 'exists' do
     expect(@game).to be_a(Game)
   end
+end
 
-  it '#game_flow' do
-    @game.game_flow
+describe '#game_flow' do
+  it 'can initiate start time' do
+    game = Game.new
+    game.game_flow
+
+    expect(game.start_time).to be_an_instance_of(Time)
   end
 end

@@ -4,7 +4,10 @@ require './lib/turn'
 
 class Game
   attr_reader :hidden_code,
-              :player1
+              :player1,
+              :start_time,
+              # :end_time,
+              # :total_time
 
   def initialize
     @hidden_code = CodeGenerator.new.hidden_code
@@ -14,11 +17,11 @@ class Game
 
 
   def game_flow
-    start_time = Time.now
-
-    until @player1.quit == true || @player1.won == true
-      turn = Turn.new(@hidden_code, @player1)
-    end
+    @start_time = Time.now
+    sleep(1)
+    # until @player1.quit == true || @player1.won == true
+    #   turn = Turn.new(@hidden_code, @player1)
+    # end
 
     end_time = Time.now
 
