@@ -18,4 +18,10 @@ describe Player do
     @player1.win
     expect(@player1.won).to eq(true)
   end
+  it '#add_to_history (and capitalizes)' do
+    @player1.add_to_history('rrrr')
+    @player1.add_to_history('gggg')
+require "pry"; binding.pry
+    expect(@player1.history).to eq(['RRRR', 'GGGG'])
+  end
 end
