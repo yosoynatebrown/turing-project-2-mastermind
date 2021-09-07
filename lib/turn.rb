@@ -15,7 +15,7 @@ class Turn
 
   def guess_prompt
     print "I have generated a beginner sequence with four elements made up of: (r)ed,
-    (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.
+    (g)reen, (b)lue, and (y)ellow. Use (h)istory to see your history of guesses, or (q)uit at any time to end the game.
     What's your guess?\n"
   end
 
@@ -30,6 +30,7 @@ class Turn
     elsif guess == 'c' || guess == 'cheat'
       puts "\nKinda lame to cheat like that but here's your hidden code: #{@hidden_code.join("").upcase}\n\n"
     elsif guess == 'h' || guess == 'history'
+      @player1.display_history
     elsif guess.length < 4
       puts "\nYour guess is too short. Try again.\n\n"
     elsif guess.length > 4

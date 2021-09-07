@@ -29,8 +29,3 @@ class Player
     end
   end
 end
-
-player1 = Player.new
-player1.add_to_history('rrrr', 3, 2)
-player1.add_to_history('gggg', 2, 2)
-player1.display_history
