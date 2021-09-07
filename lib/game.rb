@@ -4,10 +4,7 @@ require './lib/turn'
 
 class Game
   attr_reader :hidden_code,
-              :player1,
-              :start_time,
-              # :end_time,
-              # :total_time
+              :player1
 
   def initialize
     @hidden_code = CodeGenerator.new.hidden_code
@@ -17,11 +14,11 @@ class Game
 
 
   def game_flow
-    @start_time = Time.now
-    sleep(1)
-    # until @player1.quit == true || @player1.won == true
-    #   turn = Turn.new(@hidden_code, @player1)
-    # end
+    start_time = Time.now
+
+    until @player1.quit == true || @player1.won == true
+      turn = Turn.new(@hidden_code, @player1)
+    end
 
     end_time = Time.now
 
@@ -31,7 +28,7 @@ class Game
     #this takes the first 0 off of 00 in minutes:
     @time_string[0] = ""
     if @player1.won == true
-      puts "Congratulations! You guessed the sequence '#{hidden_code.join.to_s.upcase}' in #{player1.number_of_guesses} guesses over #{@time_string}."
+      puts "Congratulations! You guessed the sequence '#{hidden_code.join.to_s.upcase}' in #{@player1.number_of_guesses} guesses over #{@time_string}."
     end
     replay
   end
