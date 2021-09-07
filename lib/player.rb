@@ -15,5 +15,5 @@ class Player
   def win
     @won = true
   end
-  
+
 end
