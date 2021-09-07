@@ -12,7 +12,7 @@ describe Turn do
       turn = Turn.new(['r', 'g', 'b', 'y'], @player1 = Player.new)
 
       expect { turn.guess_prompt }.to output("I have generated a beginner sequence with four elements made up of: (r)ed,
-    (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.
+    (g)reen, (b)lue, and (y)ellow. Use (h)istory to see your history of guesses, or (q)uit at any time to end the game.
     What's your guess?\n").to_stdout
     end
   end
