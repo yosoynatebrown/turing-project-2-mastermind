@@ -4,26 +4,36 @@ require './lib/turn'
 
 class Game
   attr_reader :hidden_code,
-              :player1
+              :player1,
+              :start_time,
+              :end_time
 
   def initialize
     @hidden_code = CodeGenerator.new.hidden_code
     @player1     = Player.new
-    @time_string = ""
+  end
+
+  def start_time
+    @start_time = Time.now
+  end
+
+  def end_time
+    @end_time = Time.now
   end
 
 
   def game_flow
-    start_time = Time.now
+    start_time
 
     until @player1.quit == true || @player1.won == true
       turn = Turn.new(@hidden_code, @player1)
+      turn.turn_flow
     end
 
-    end_time = Time.now
+    end_time
 
-    total_time = end_time - start_time
-
+    total_time = @end_time - @start_time
+    
     @time_string = Time.at(total_time).strftime("%M minutes, %S seconds")
     #this takes the first 0 off of 00 in minutes:
     @time_string[0] = ""
