@@ -29,6 +29,7 @@ class Turn
       @player1.quit = true
     elsif guess == 'c' || guess == 'cheat'
       puts "\nKinda lame to cheat like that but here's your hidden code: #{@hidden_code.join("").upcase}\n\n"
+    elsif guess == 'h' || guess == 'history'
     elsif guess.length < 4
       puts "\nYour guess is too short. Try again.\n\n"
     elsif guess.length > 4
@@ -62,6 +63,7 @@ class Turn
     unless @guess == 'c' || @guess == 'cheat' || @guess == 'q' || @guess == 'quit' || @guess.length > 4 || @guess.length < 4
       puts "\n'#{@guess.upcase}' has #{@colors_correct} of the correct elements with #{@colors_in_correct_positions} in the correct positions
       You've taken #{@player1.number_of_guesses} guess(es)\n"
+      @player1.add_to_history(@guess, @colors_correct, @colors_in_correct_positions)
     end
   end
 end
