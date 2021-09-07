@@ -23,9 +23,10 @@ class Player
   end
 
   def display_history
-    puts "|  Guess     Colors Correct    Colors in Correct Positions    |"
-    @history.each do |guess, results_array|
-      puts "|   #{guess}                #{results_array[0]}               #{results_array[1]}                     |"
+    puts "\n|  Guess     Colors Correct    Colors in Correct Positions    |"
+    @history.each do |guess, history_results_array|
+      puts "|   #{guess}                #{history_results_array[0]}               #{history_results_array[1]}                     |"
     end
+    puts "\n"
   end
 end
