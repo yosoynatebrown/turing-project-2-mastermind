@@ -7,7 +7,6 @@ describe CodeGenerator do
    it 'exists' do
      code_generator = CodeGenerator.new
 
-
     expect(code_generator).to be_an_instance_of(CodeGenerator)
    end
 

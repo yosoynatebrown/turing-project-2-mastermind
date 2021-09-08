@@ -6,12 +6,15 @@ describe Game do
     @game = Game.new
   end
   it 'exists' do
+
     expect(@game).to be_a(Game)
   end
   it 'creates hidden_code instance variables' do
+
     expect(@game.hidden_code).to be_an(Array)
   end
   it 'creates player object instance variables' do
+    
     expect(@game.player1).to be_an_instance_of(Player)
   end
 
